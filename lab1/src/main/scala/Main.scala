@@ -15,12 +15,12 @@ def Main2:Unit={
   val number_4 = C(0, 0)
   println(s"${number_1} + ${number_2} = ${number_1+ number_2}")
   println(s"${number_1} + ${number_3} = ${number_1+ number_3}")
-   println(s"${number_1} - ${number_2} = ${number_1- number_2}")
+  println(s"${number_1} - ${number_2} = ${number_1- number_2}")
   println(s"${number_1} - ${number_3} = ${number_1- number_3}")
-   println(s"${number_1} * ${number_2} = ${number_1* number_2}")
+  println(s"${number_1} * ${number_2} = ${number_1* number_2}")
   println(s"${number_1} * ${number_3} = ${number_1* number_3}")
-   println(s"${number_1} / ${number_2} = ${number_1/ number_2}")
-     println(s"${number_1} / ${number_3} = ${number_1/ number_3}")
+  println(s"${number_1} / ${number_2} = ${number_1/ number_2}")
+  println(s"${number_1} / ${number_3} = ${number_1/ number_3}")
  
   try {
     println(s"${number_1} / ${0} = ${number_1/ 0}")
