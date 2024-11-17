@@ -9,7 +9,7 @@ def mainProg: Unit = {
   val seq3 = Seq(Some(5.4), Some(-2.0), Some(1.0), None, Some(2.6))
    Console.println(sumOption(seq3))
    Console.println(deStutter(sequence1))
-   */
+   
    val seq4 = Seq(1, 2, 2, 4)
     
     Console.println(isOrdered(seq4)(_ == _))
@@ -20,6 +20,100 @@ def mainProg: Unit = {
   Console.println(median(seq1))
   Console.println(minMax(seq1))
   Console.println(threeNumbers(10))
+  */
+
+ val str = "test string"
+ Console.println(countChars(str))
+ Console.println(swap(Seq(1,2,3,4,5)))
+ Console.println(score(Seq(1, 3, 2, 2, 4, 5))(Seq(2, 1, 2, 4, 7, 2)))
+ exercise4(100)
+}
+
+def exercise4(max: Int): Unit ={
+ val linie = io.Source
+  .fromResource("ogniem-i-mieczem.txt")
+  .getLines.toList
+  val text = linie.foldLeft("")(_+_)
+  val textLowerCase = text.toLowerCase
+  val only_letters_string = textLowerCase.filter( (a => a.isLetter))
+  val map_letters = only_letters_string.groupBy(identity).mapValues(_.size)
+  val histogramLines = map_letters.toSeq.map { case (char, count) =>
+      val barLenght = if (count > max) max else count
+      s"$char: ${"*" * barLenght}"
+    }
+    val histogram = histogramLines.foldLeft("")(_+_+"\n")
+    Console.println(histogram)
+}
+
+@main
+def zad5: Unit = {
+ case class Województwo(nazwa: String, min: Int)
+ // max ID gminy z województwa w: w.min + 19999
+ case class Wynik(
+  ID: Int,
+  KOALICJA_OBYWATELSKA: Int,
+  LEWICA_RAZEM: Int,
+  POLEXIT: Int,
+  JEDNOŚĆ_NARODU: Int,
+  PIS: Int,
+  EUROPA_CHRISTI: Int,
+  WIOSNA: Int,
+  KONFEDERACJA: Int,
+  KUKIZ15: Int,
+  POLSKA_FAIR_PLAY: Int
+ )
+
+ val województwa = List(
+      Województwo("dolnośląskie",20000),
+      Województwo("kujawsko-pomorskie",40000),
+      Województwo("lubelskie",60000),
+      Województwo("lubuskie",80000),
+      Województwo("łódzkie",100000),
+      Województwo("małopolskie",120000),
+      Województwo("mazowieckie",140000),
+      Województwo("opolskie",160000),
+      Województwo("podkarpackie",180000),
+      Województwo("podlaskie",200000),
+      Województwo("pomorskie",220000),
+      Województwo("śląskie",240000),
+      Województwo("świętokrzyskie",260000),
+      Województwo("warmińsko-mazurskie",280000),
+      Województwo("wielkopolskie",300000),
+      Województwo("zachodniopomorskie",320000)
+    )
+
+ val wyniki = io.Source
+  .fromResource("wyniki.csv")
+  .getLines
+  .toList
+  .map(l => {
+   l.split(",").toList.map(_.toInt) match {
+    case List(a,b,c,d,e,f,g,h,i,j,k) => Wynik(a,b,c,d,e,f,g,h,i,j,k)
+    case _ => throw new IllegalArgumentException
+   }
+ })
+ Console.println(wyniki)
+}
+
+
+def score(code: Seq[Int])(move: Seq[Int]): (Int, Int)={
+ val blacks = code.zip(move).count { case (c, m) => c == m }  
+ val whites = code.intersect(move).length - blacks 
+ (blacks, whites)
+}
+
+
+def swap[A](seq: Seq[A]): Seq[A] ={
+  seq.grouped(2).flatMap {
+    case Seq(a,b) => Seq(b,a)
+    case Seq(a) => Seq(a)
+  }.toSeq
+
+}
+
+def countChars(str: String): Int ={
+  str.distinct.lengthIs
+
 }
 
 def subSeq[A](seq: Seq[A], begIdx: Int, endIdx: Int): Seq[A] ={
