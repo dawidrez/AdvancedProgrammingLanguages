@@ -2,18 +2,18 @@ import scala.annotation.tailrec
 
 @main
 def mainProg: Unit = {
-  //println(reverse("kot"))
-  //println(isPrime(10))   
-  //println(binToDec(1001))
-  //println(value(8))
-  //print(isOrdered(Array(1, 3, 3, 6, 8), _ <= _) )
+  println(reverse("kot"))
+  println(isPrime(10))   
+  println(binToDec(1001))
+  println(value(8))
+  print(isOrdered(Array(1, 3, 3, 6, 8), _ <= _) )
  val tab1 = Array(-1, 3, 2, -8, 5)
 val tab2 = Array(-3, 3, 3, 0, -4, 5)
 
 val result = worth(tab1, tab2)(
-  (x: Int, y: Int) => x < y  // Predykat: sprawdzamy, czy pierwszy element jest mniejszy od drugiego
+  (x: Int, y: Int) => x < y  
 )(
-  (x: Int, y: Int) => x + y  // Operacja: sumujemy elementy, jeśli predykat jest spełniony
+  (x: Int, y: Int) => x + y
 )
 
 println(result)
