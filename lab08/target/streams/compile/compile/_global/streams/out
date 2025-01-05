@@ -1,0 +1,5 @@
+[0m[[0m[31merror[0m] [0m[0m[31m[31m-- Error: /home/dawid/Desktop/ug/sem1/zaawansowaneJezykiProgramowania/lab08/src/main/scala/Zad1.scala:28:8 [0m[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m28 |[0m        context.stop(self)       [0m
+[0m[[0m[31merror[0m] [0m[0m[31m[31m   |[0m        ^[0m[0m
+[0m[[0m[31merror[0m] [0m[0m[31m   |[0m        Line is indented too far to the left, or a `}` is missing[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
